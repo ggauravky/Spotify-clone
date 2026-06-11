@@ -1,10 +1,22 @@
-import {Button} from "./components/ui/button";
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
+import {Button} from "./components/ui/button"
 
 function App() {
   return (
     <>
-      <div className="text-amber-300">Hi</div>
-      <Button>This is A button</Button>
+      <header>
+        <Show when="signed-out">
+          <SignInButton >
+            <Button>Sign In</Button>
+          </SignInButton>
+          <SignUpButton >
+            <Button>Sign Up</Button>
+          </SignUpButton>
+        </Show>
+        <Show when="signed-in">
+          <UserButton />
+        </Show>
+      </header>
     </>
   )
 }
