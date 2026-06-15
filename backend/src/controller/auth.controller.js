@@ -1,6 +1,6 @@
 import { User } from '../models/user.model.js';
 
-export const authCallback = async (req, res) => {
+export const authCallback = async (req, res, next) => {
   try{
     const{id, firstName, lastName, imageUrl} = req.body;
 
@@ -19,6 +19,6 @@ export const authCallback = async (req, res) => {
     res.status(200).send('User signed up successfully');
   } catch (error) {
     console.error('Error occurred during user signup:', error);
-    res.status(500).send('Error occurred');
+    next(error);
   }
 }
