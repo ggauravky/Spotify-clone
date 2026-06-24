@@ -1,22 +1,14 @@
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
-import {Button} from "./components/ui/button"
+import { Route, Router } from 'react-router-dom'
+import HomePage from './pages/home/HomePage';
+import authCallback from './pages/auth-callback/authCallback';
 
 function App() {
   return (
     <>
-      <header>
-        <Show when="signed-out">
-          <SignInButton >
-            <Button>Sign In</Button>
-          </SignInButton>
-          <SignUpButton >
-            <Button>Sign Up</Button>
-          </SignUpButton>
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
-      </header>
+    <Router>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<authCallback />} />
+    </Router>
     </>
   )
 }
