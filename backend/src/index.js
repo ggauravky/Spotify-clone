@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { clerkMiddleware } from '@clerk/express';
 import fileupload from 'express-fileupload';
 import path from 'path';
+import cors from 'cors';
 
 import {connectDB} from './lib/db.js';
 
@@ -21,6 +22,11 @@ const app = express();
 const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000;
+
+app.use(cors(
+  origin ="http://localhost:3000",
+  credentials = true,
+));
 
 app.use(express.json());
 app.use(clerkMiddleware()); //this will add the user object to the request if the user is authenticated
