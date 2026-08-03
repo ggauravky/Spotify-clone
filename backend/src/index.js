@@ -28,7 +28,7 @@ app.use(cors(
   credentials = true,
 ));
 
-app.use(express.json());
+app.use(expres.json());
 app.use(clerkMiddleware()); //this will add the user object to the request if the user is authenticated
 
 app.use(fileupload({
